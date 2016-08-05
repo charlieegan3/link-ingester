@@ -6,6 +6,13 @@ gem 'puma', '~> 3.0'
 
 gem 'turbolinks', '~> 5'
 
+group :production do
+  gem 'therubyracer'
+  gem 'execjs'
+  gem 'uglifier', '>= 1.3.0'
+  gem 'sass-rails', '~> 5.0'
+end
+
 group :development, :test do
   gem 'pry'
 end
