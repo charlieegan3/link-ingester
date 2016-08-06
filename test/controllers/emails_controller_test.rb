@@ -18,6 +18,20 @@ class EmailsControllerTest < ActionDispatch::IntegrationTest
     ).empty?
   end
 
+  test "should create plain email" do
+    assert_difference('Email.count', 1) do
+      post "/emails", params: {
+        plain: "this is a link: http://charlie.com",
+        email: {
+          from_name: "Charlie",
+          from_email: "me@charlie.com",
+          subject: "Example Subject",
+        }
+      }
+    end
+    assert_response :success
+  end
+
   test "should list email" do
     get "/emails"
     assert_response :success

@@ -10,7 +10,7 @@ class EmailsController < ApplicationController
   end
 
   def create
-    render json: Email.create(email_params)
+    render json: Email.create!(email_params)
   end
 
   def destroy
@@ -21,6 +21,9 @@ class EmailsController < ApplicationController
   private
 
   def email_params
+    if params[:email][:html].blank?
+      params[:email][:html] = params[:plain]
+    end
     params.require(:email).permit(:from_name, :from_email, :subject, :html)
   end
 end

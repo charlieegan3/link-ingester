@@ -4,5 +4,5 @@
   <%= button_to "delete", @email, method: :delete %>
 </p>
 <div id="email-body">
-  <%= @email.html.html_safe %>
+  <%= @email.html.to_s.html_safe %>
 </div>
