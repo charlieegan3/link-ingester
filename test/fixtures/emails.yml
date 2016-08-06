@@ -1,0 +1,5 @@
+simple:
+  from_name: Charlie
+  from_email: me@charlie.com
+  subject: Example Subject
+  html: '<p><a href="http://charlie.com">Charlie</a></p>'
