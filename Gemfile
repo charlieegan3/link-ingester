@@ -6,6 +6,8 @@ gem 'puma', '~> 3.0'
 
 gem 'turbolinks', '~> 5'
 
+gem 'rollbar'
+
 group :production do
   gem 'therubyracer'
   gem 'execjs'
