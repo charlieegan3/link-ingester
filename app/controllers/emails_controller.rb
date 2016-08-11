@@ -2,8 +2,6 @@ class EmailsController < ApplicationController
   protect_from_forgery except: :create
 
   def index
-    puts "Here:"
-    puts request.env['omniauth.auth']
     @emails = Email.all.order(created_at: :desc)
   end
 

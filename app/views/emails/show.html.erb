@@ -1,6 +1,6 @@
 <h1><%= @email.subject %></h1>
 <p>
-  <%= @email.from_name + ", " + @email.from_email %>
+  <%= @email.from_name.to_s + ", " + @email.from_email.to_s %>
   <%= button_to "delete", @email, method: :delete %>
 </p>
 <div id="email-body">
