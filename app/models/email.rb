@@ -3,7 +3,10 @@ class Email < ApplicationRecord
 
   def links
     if html.match(/\/>|<a|<p|\w+="/)
-      Nokogiri::HTML(html).css("a").map { |a| { text: a.text, url: a["href"] } }
+      Nokogiri::HTML(html)
+        .css("a")
+        .map { |a| { text: a.text, url: a["href"] } }
+        .reject { |a| a[:text].strip == "" }
     else
       html.scan(/https?\S+/).map { |url| { text: nil, url: url } }
     end

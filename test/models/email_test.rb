@@ -6,6 +6,11 @@ class EmailTest < ActiveSupport::TestCase
     assert email.links == [{ text: "Charlie", url: "http://charlie.com" }]
   end
 
+  test "image links are ignored" do
+    email = emails(:image_link)
+    assert email.links == []
+  end
+
   test "links are extracted from plain body emails" do
     email = emails(:plain)
     assert email.links == [{ text: nil, url: "http://charlie.com" }]

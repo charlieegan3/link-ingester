@@ -3,6 +3,11 @@ simple:
   from_email: me@charlie.com
   subject: Example Subject
   html: '<p><a href="http://charlie.com">Charlie</a></p>'
+image_link:
+  from_name: Charlie
+  from_email: me@charlie.com
+  subject: Example Subject
+  html: '<p><a href="http://charlie.com"><img src="http://image.com"/></a></p>'
 plain:
   from_name: Charlie
   from_email: me@charlie.com
