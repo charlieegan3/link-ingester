@@ -3,6 +3,11 @@
   <%= @email.from_name.to_s + ", " + @email.from_email.to_s %>
   <%= button_to "delete", @email, method: :delete %>
 </p>
+<ul>
+  <% @email.content_links.each do |l| %>
+    <li><%= link_to l[:text], l[:url] %></li>
+  <% end %>
+</ul>
 <div id="email-body">
   <%= @email.html.to_s.html_safe %>
 </div>
