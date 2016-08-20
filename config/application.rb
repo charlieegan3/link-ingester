@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module LinkIngester
   class Application < Rails::Application
+    config.autoload_paths << Rails.root.join('lib')
     unless Rails.env.production?
       config.before_configuration do
         env_file = File.join(Rails.root, 'config', 'local_env.yml')

@@ -8,6 +8,8 @@ gem 'turbolinks', '~> 5'
 
 gem 'rollbar'
 
+gem 'curb'
+
 group :production do
   gem 'therubyracer'
   gem 'execjs'
