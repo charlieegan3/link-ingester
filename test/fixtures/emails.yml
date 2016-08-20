@@ -18,8 +18,15 @@ newsletter:
   from_email: me@charlie.com
   subject: Example Subject
   html: |
-    <p><a href="http://charlie.com">Charlie</a></p>
-    <p><a href="http://androidweekly.us2.list-manage.com/track/click">Charlie</a></p>
+    <p><a href="http://charlie.com">Really great site</a></p>
+    <p><a href="http://androidweekly.us2.list-manage.com/track/click">Really great site</a></p>
     <p><a href="http://charlie.com">unsubscribe</a></p>
     <p><a href="http://androidweekly.us2.list-manage.com/unsubscribe">unsubscribe</a></p>
     <p><a href="http://list-manage.com/unsubscribe">unsubscribe</a></p>
+varying_link_length:
+  from_name: Charlie
+  from_email: me@charlie.com
+  subject: Example Subject
+  html: |
+    <p><a href="http://charlie.com">Charlie</a></p>
+    <p><a href="http://google.com">This is a really amazing article</a></p>

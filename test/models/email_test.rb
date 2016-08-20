@@ -19,8 +19,15 @@ class EmailTest < ActiveSupport::TestCase
   test "unsubscribe links are filtered" do
     email = emails(:newsletter)
     assert email.content_links == [
-      { text: "Charlie", url: "http://charlie.com" },
-      { text: "Charlie", url: "http://androidweekly.us2.list-manage.com/track/click" },
+      { text: "Really great site", url: "http://charlie.com" },
+      { text: "Really great site", url: "http://androidweekly.us2.list-manage.com/track/click" },
+    ]
+  end
+
+  test "links with short titles are rejected" do
+    email = emails(:varying_link_length)
+    assert email.content_links == [
+      { text: "This is a really amazing article", url: "http://google.com" },
     ]
   end
 end
