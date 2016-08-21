@@ -6,7 +6,7 @@ class Email < ApplicationRecord
 
   def save_links
     content_links.each do |link|
-      EmailLink.create(title: link[:text], email: self, source_url: link[:url])
+      EmailLink.create(title: link[:text], email: self, source_url: link[:url]) rescue next
     end
   end
 
