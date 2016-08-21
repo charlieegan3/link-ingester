@@ -10,6 +10,8 @@ gem 'rollbar'
 
 gem 'curb'
 
+gem 'metainspector'
+
 group :production do
   gem 'therubyracer'
   gem 'execjs'

@@ -2,10 +2,20 @@
   <div>
     <%= distance_of_time_in_words(link.created_at, Time.zone.now) %> -
     <% if !link.email_links.empty? %>
-      <%= link.email_links.map(&:email).map(&:from_name).join(", ") %> -
-      <%= link_to link.email_links.first.title, link.url %>
+      <%= link.email_links.map(&:email).compact.map(&:from_name).join(", ") %>
+    <% else %>
+      No Senders
+    <% end%> -
+    <% if link.title %>
+      <%= link_to link.title, link.url %>
     <% else %>
       <%= link_to link.url, link.url %>
-    <% end%>
+    <% end %>
+    <% if link.hn_status %>
+      <%= link_to "HN Search", "https://hn.algolia.com/?query=#{link.title.split(/\W+/).join("%20")}", style: "color: red;" %> -
+    <% end %>
+    <% if link.description %>
+      <%= link.description[0..50] %>
+    <% end %>
   </div>
 <% end %>
