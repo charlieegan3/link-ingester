@@ -1,9 +1,14 @@
 class RedirectExplorer
   def explore(url)
-    result = Curl::Easy.perform(url) do |curl|
-      curl.head = true
-      curl.follow_location = true
+    begin
+      result = Curl::Easy.perform(url) do |curl|
+        curl.head = true
+        curl.follow_location = true
+        curl.connect_timeout_ms = 2000
+      end
+      return result.last_effective_url
+    rescue
+      return url
     end
-    result.last_effective_url
   end
 end
