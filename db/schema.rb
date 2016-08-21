@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160820222346) do
+ActiveRecord::Schema.define(version: 20160821084259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160820222346) do
     t.string   "source_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "title"
     t.index ["email_id"], name: "index_email_links_on_email_id", using: :btree
     t.index ["link_id"], name: "index_email_links_on_link_id", using: :btree
   end

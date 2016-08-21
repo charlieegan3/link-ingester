@@ -5,7 +5,7 @@ class Email < ApplicationRecord
 
   def save_links
     content_links.each do |link|
-      EmailLink.create(email: self, source_url: link[:url])
+      EmailLink.create(title: link[:text], email: self, source_url: link[:url])
     end
   end
 
@@ -23,10 +23,9 @@ class Email < ApplicationRecord
   def content_links
     text_pattern = /subscri|(update|manage) your preferences|read this (e\-?mail|issue)? on the web/i
     url_pattern = /subscri|list\-manage\.com\/(profile|unsub)/i
-    links.reject do |l|
-      l[:text].match(text_pattern) ||
-        l[:url].match(url_pattern) ||
-        l[:text].split(/\s+/).size == 1
+    links.reject { |l| l[:url].match(url_pattern) }.reject do |l|
+      l[:text].present? &&
+        (l[:text].match(text_pattern) || l[:text].split(/\s+/).size == 1)
     end
   end
 end
