@@ -30,4 +30,24 @@ class EmailTest < ActiveSupport::TestCase
       { text: "This is a really amazing article", url: "http://google.com" },
     ]
   end
+
+  test "email links are saved correctly" do
+    Link.destroy_all
+    email = emails(:bitly)
+    email.save_links
+    assert Link.count == 2
+    assert Link.pluck(:url) == ["http://guides.rubyonrails.org/testing.html", "http://serializer.io/"]
+  end
+
+  test "email links are saved after create" do
+    Link.destroy_all
+    email = Email.create(
+      from_name: "bob",
+      from_email: "bob@b.com",
+      subject: "things",
+      html: '<a href="http://google.com">Google Homepage</a>',
+    )
+    assert Link.count == 1
+    assert EmailLink.last.email == email
+  end
 end

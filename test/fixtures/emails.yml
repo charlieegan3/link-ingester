@@ -30,3 +30,10 @@ varying_link_length:
   html: |
     <p><a href="http://charlie.com">Charlie</a></p>
     <p><a href="http://google.com">This is a really amazing article</a></p>
+bitly:
+  from_name: Email Person
+  from_email: email@person.com
+  subject: Newsletter
+  html: |
+    <p><a href="http://bit.ly/1bQoGgH">Rails Testing Guide</a></p>
+    <p><a href="http://bit.ly/2brKdV5">Serializer.io Newsreader</a></p>
