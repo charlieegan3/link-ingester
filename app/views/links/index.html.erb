@@ -1,6 +1,10 @@
 <% @links.each do |link| %>
   <div>
     <%= distance_of_time_in_words(link.created_at, Time.zone.now) %> -
-    <%= link_to link.email_links.first.title, link.url %>
+    <% if !link.email_links.empty? %>
+      <%= link_to link.email_links.first.title, link.url %>
+    <% else %>
+      <%= link_to link.url, link.url %>
+    <% end%>
   </div>
 <% end %>
