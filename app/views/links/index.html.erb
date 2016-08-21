@@ -1,0 +1,10 @@
+<% @links.each do |link| %>
+  <div>
+    <p><%= distance_of_time_in_words(link.created_at, Time.zone.now) %> - <%= link_to link.pretty_url, link.url %></p>
+    <ul>
+      <% link.email_links.each do |email_link| %>
+        <li><%= email_link.title %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

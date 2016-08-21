@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  root "emails#index"
+  root "links#index"
   resources :emails
+  resources :links, only: :index
 end
