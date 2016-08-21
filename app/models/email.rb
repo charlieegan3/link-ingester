@@ -1,4 +1,5 @@
 class Email < ApplicationRecord
+  has_many :email_links, dependent: :destroy
   validates :html, presence: true
 
   after_create :save_links
