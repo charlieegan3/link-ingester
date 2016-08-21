@@ -23,7 +23,7 @@ class Email < ApplicationRecord
 
   def content_links
     text_pattern = /subscri|(update|manage) your preferences|read this (e\-?mail|issue)? on the web/i
-    url_pattern = /subscri|list\-manage\.com\/(profile|unsub)/i
+    url_pattern = /subscri|list\-manage2?\.com\/(profile|unsub|vcard|forward)|forward\-?to/i
     links.reject { |l| l[:url].match(url_pattern) }.reject do |l|
       l[:text].present? &&
         (l[:text].match(text_pattern) || l[:text].split(/\s+/).size == 1)
