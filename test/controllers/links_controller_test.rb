@@ -7,9 +7,9 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show link" do
-    Link.create(url: "http://google.com")
+    EmailLink.create(email: emails(:simple), source_url: "http://google.com", title: "link title")
     get "/links"
     assert_response :success
-    assert response.body.include? "google.com"
+    assert response.body.include? "link title"
   end
 end
