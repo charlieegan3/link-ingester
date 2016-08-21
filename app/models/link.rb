@@ -4,7 +4,7 @@ class Link < ApplicationRecord
   before_validation :populate_meta
 
   def populate_meta
-    page = MetaInspector.new(self.url)
+    page = MetaInspector.new(self.url, read_timeout: 3)
     self.title = page.title.gsub(/\W+/, " ").gsub(/\s+/, " ")
     self.description = page.description.gsub(/\s+/, " ")
     self.hn_status = fetch_hn_status != 0
