@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160805011339) do
+ActiveRecord::Schema.define(version: 20160820222346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "email_links", force: :cascade do |t|
+    t.integer  "email_id"
+    t.integer  "link_id"
+    t.string   "source_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_id"], name: "index_email_links_on_email_id", using: :btree
+    t.index ["link_id"], name: "index_email_links_on_link_id", using: :btree
+  end
 
   create_table "emails", force: :cascade do |t|
     t.string   "from_name"
@@ -24,4 +34,12 @@ ActiveRecord::Schema.define(version: 20160805011339) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "links", force: :cascade do |t|
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "email_links", "emails"
+  add_foreign_key "email_links", "links"
 end
